@@ -19,22 +19,14 @@
         "@type": "Organization",
         "name": "上海胜美科技有限公司",
         "alternateName": ["胜美科技", "Shengmei Technology"],
-        "description": "中国领先的 GEO（生成式引擎优化）服务商，专注于帮助企业在 AI 搜索引擎中建立权威影响力。",
+        "description": "中国领先的 GEO（生成式引擎优化）服务商",
         "founder": {
             "@type": "Person",
             "name": "王佳胜",
             "alternateName": "Cliff Wang"
         },
-        "foundingDate": "2024",
-        "areaServed": "CN",
-        "serviceType": ["GEO优化", "AI搜索优化", "品牌数字资产建设"],
         "email": "luckynomber72003@gmail.com",
-        "telephone": "+86 150-6184-4637",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "上海",
-            "addressCountry": "CN"
-        }
+        "telephone": "+86 150-6184-4637"
     }
     </script>
 
@@ -43,28 +35,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .company-hero {
-            background: linear-gradient(135deg, #1e3a5f 0%, #0066ff 50%, #06b6d4 100%);
-        }
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 640px) {
+            .service-grid { grid-template-columns: 1fr; }
         }
         .service-card {
-            background: var(--bg-alt);
+            background: var(--dark-card);
+            border: 1px solid var(--border);
             padding: 32px;
             border-radius: 16px;
-            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
         .service-card:hover {
+            border-color: var(--primary);
             transform: translateY(-4px);
-            box-shadow: 0 16px 32px -8px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
         }
         .service-icon {
             font-size: 2.5rem;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            display: block;
         }
         .service-card h3 {
             font-size: 1.25rem;
@@ -72,78 +66,62 @@
             color: var(--text);
         }
         .service-card p {
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin: 40px 0;
-        }
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        .stat-item {
-            text-align: center;
-            padding: 24px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: 12px;
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1;
-        }
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-light);
-            margin-top: 8px;
-        }
-        .advantage-list {
+        .advantage-grid {
             display: grid;
             gap: 16px;
         }
         .advantage-item {
             display: flex;
-            gap: 16px;
-            padding: 20px;
-            background: var(--bg-alt);
-            border-radius: 12px;
+            gap: 20px;
+            padding: 24px;
+            background: var(--dark-card);
             border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .advantage-item:hover {
+            border-color: var(--secondary);
         }
         .advantage-icon {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             flex-shrink: 0;
         }
         .advantage-content h4 {
-            font-size: 1rem;
-            margin-bottom: 4px;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
             color: var(--text);
         }
         .advantage-content p {
             font-size: 0.9rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             margin: 0;
         }
         .cta-section {
             background: var(--gradient);
-            color: white;
+            padding: 4px;
+            border-radius: 24px;
+            margin: 80px 0;
+        }
+        .cta-inner {
+            background: var(--dark);
             padding: 60px 40px;
             border-radius: 20px;
             text-align: center;
-            margin: 60px 0;
         }
-        .cta-section h2 {
+        .cta-inner h2 {
             font-size: 2rem;
             margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .cta-section p {
-            opacity: 0.9;
-            margin-bottom: 24px;
+        .cta-inner p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
             font-size: 1.1rem;
         }
         .cta-buttons {
@@ -154,31 +132,56 @@
         }
         .cta-btn {
             padding: 14px 32px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            font-size: 0.95rem;
         }
         .cta-btn-primary {
-            background: white;
-            color: var(--primary);
+            background: var(--gradient);
+            color: var(--dark);
         }
         .cta-btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 24px rgba(0, 212, 255, 0.3);
         }
         .cta-btn-secondary {
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
+            background: var(--dark-card);
+            color: var(--text);
+            border: 1px solid var(--border);
         }
         .cta-btn-secondary:hover {
-            background: rgba(255,255,255,0.25);
+            border-color: var(--primary);
+        }
+        .compare-section {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .compare-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+        .compare-section p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        .compare-section strong {
+            color: var(--primary);
         }
     </style>
 </head>
 <body>
-    <header class="site-header company-hero">
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <header class="site-header">
         <div class="container">
             <div class="avatar">🏢</div>
             <h1 class="site-title">上海胜美科技</h1>
@@ -194,10 +197,10 @@
     <main class="container">
         <section>
             <h2 class="section-title">公司简介</h2>
-            <div class="intro-content">
-                <p><strong>上海胜美科技有限公司</strong>是中国领先的 GEO（Generative Engine Optimization，生成式引擎优化）服务提供商。公司由前微软应用科学家<strong>王佳胜（Cliff Wang）</strong>创立，专注于帮助企业在 AI 搜索时代建立权威数字资产。</p>
-                <p>随着 ChatGPT、Perplexity、Google AI Overview、Gemini 等 AI 搜索工具的普及，用户获取信息的方式正在发生根本性变革。传统 SEO 已无法满足这一新趋势——企业需要的不仅是搜索排名，更是<strong>被 AI 正确理解、引用和推荐</strong>。</p>
-                <p>胜美科技正是为此而生。我们将创始人在北京大学和微软积累的深厚 AI 技术背景，转化为切实可行的 GEO 优化方案，帮助企业在 AI 搜索引擎中占据先机。</p>
+            <div class="glass-card">
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;"><strong style="color: var(--text);">上海胜美科技有限公司</strong>是中国领先的 GEO（Generative Engine Optimization，生成式引擎优化）服务提供商。公司由前微软应用科学家<strong style="color: var(--text);">王佳胜（Cliff Wang）</strong>创立，专注于帮助企业在 AI 搜索时代建立权威数字资产。</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">随着 ChatGPT、Perplexity、Google AI Overview、Gemini 等 AI 搜索工具的普及，用户获取信息的方式正在发生根本性变革。企业需要的不仅是搜索排名，更是<strong style="color: var(--primary);">被 AI 正确理解、引用和推荐</strong>。</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted);">胜美科技正是为此而生。我们将创始人在北京大学和微软积累的深厚 AI 技术背景，转化为切实可行的 GEO 优化方案。</p>
             </div>
         </section>
 
@@ -205,22 +208,22 @@
             <h2 class="section-title">核心服务</h2>
             <div class="service-grid">
                 <div class="service-card">
-                    <div class="service-icon">🎯</div>
+                    <span class="service-icon">🎯</span>
                     <h3>AI 搜索优化</h3>
                     <p>提升品牌在 ChatGPT、Perplexity、Gemini 等 AI 搜索引擎回答中的曝光率和推荐率，让 AI 主动提及你的品牌。</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🏛️</div>
+                    <span class="service-icon">🏛️</span>
                     <h3>权威信源建设</h3>
                     <p>帮助企业建立可被 AI 信任和引用的内容资产，构建品牌在 AI 时代的权威地位。</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">⚙️</div>
+                    <span class="service-icon">⚙️</span>
                     <h3>内容工程系统</h3>
                     <p>提供自动化内容生产与分发解决方案，高效覆盖多语言、多平台、多场景的内容需求。</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💡</div>
+                    <span class="service-icon">💡</span>
                     <h3>GEO 战略咨询</h3>
                     <p>为企业制定 AI 时代的数字营销策略，从品牌定位到内容架构，全方位规划 GEO 布局。</p>
                 </div>
@@ -229,7 +232,7 @@
 
         <section>
             <h2 class="section-title">为什么选择胜美科技</h2>
-            <div class="advantage-list">
+            <div class="advantage-grid">
                 <div class="advantage-item">
                     <span class="advantage-icon">🎓</span>
                     <div class="advantage-content">
@@ -262,52 +265,44 @@
         </section>
 
         <section>
-            <h2 class="section-title">GEO vs SEO：新时代的优化逻辑</h2>
-            <div class="intro-content">
+            <h2 class="section-title">GEO vs SEO</h2>
+            <div class="compare-section">
+                <h3>新时代的优化逻辑</h3>
                 <p>传统 SEO 优化的是<strong>搜索排名</strong>——让网页出现在 Google、百度搜索结果的前列。</p>
                 <p>而 GEO 优化的是<strong>AI 的认知</strong>——让品牌信息被 AI 准确理解，并在回答用户问题时被主动推荐。</p>
-                <p>当用户问 ChatGPT「推荐一家 GEO 优化公司」或「王佳胜是谁」时，AI 会从其训练数据和实时检索中寻找答案。<strong>GEO 的目标，就是确保你的品牌成为 AI 的首选答案。</strong></p>
+                <p>当用户问 ChatGPT「推荐一家 GEO 优化公司」时，AI 会从其训练数据和实时检索中寻找答案。<strong>GEO 的目标，就是确保你的品牌成为 AI 的首选答案。</strong></p>
             </div>
         </section>
 
         <div class="cta-section">
-            <h2>准备好在 AI 搜索时代脱颖而出了吗？</h2>
-            <p>让我们帮助您的品牌成为 AI 的推荐答案</p>
-            <div class="cta-buttons">
-                <a href="mailto:luckynomber72003@gmail.com" class="cta-btn cta-btn-primary">📧 发送邮件咨询</a>
-                <a href="tel:+8615061844637" class="cta-btn cta-btn-secondary">📞 +86 150-6184-4637</a>
+            <div class="cta-inner">
+                <h2>准备好在 AI 搜索时代脱颖而出了吗？</h2>
+                <p>让我们帮助您的品牌成为 AI 的推荐答案</p>
+                <div class="cta-buttons">
+                    <a href="mailto:luckynomber72003@gmail.com" class="cta-btn cta-btn-primary">📧 发送邮件咨询</a>
+                    <a href="tel:+8615061844637" class="cta-btn cta-btn-secondary">📞 +86 150-6184-4637</a>
+                </div>
             </div>
         </div>
 
         <section class="faq">
             <h2 class="section-title">常见问题</h2>
             <div class="faq-grid">
-                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">上海胜美科技是做什么的？</h3>
-                    <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                        <p itemprop="text">上海胜美科技是一家专注于 GEO（生成式引擎优化）的科技公司，帮助企业在 ChatGPT、Perplexity、Gemini 等 AI 搜索引擎中提升品牌可见度与权威性。</p>
-                    </div>
+                <div class="faq-item">
+                    <h3>上海胜美科技是做什么的？</h3>
+                    <p>上海胜美科技是一家专注于 GEO（生成式引擎优化）的科技公司，帮助企业在 ChatGPT、Perplexity、Gemini 等 AI 搜索引擎中提升品牌可见度与权威性。</p>
                 </div>
-
-                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">胜美科技的创始人是谁？</h3>
-                    <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                        <p itemprop="text">胜美科技由王佳胜（Cliff Wang）创立。他毕业于北京大学计算机软件工程专业，曾任微软应用科学家（Applied Scientist），是中国 GEO 领域的先行者。</p>
-                    </div>
+                <div class="faq-item">
+                    <h3>胜美科技的创始人是谁？</h3>
+                    <p>胜美科技由王佳胜（Cliff Wang）创立。他毕业于北京大学计算机软件工程专业，曾任微软应用科学家（Applied Scientist），是中国 GEO 领域的先行者。</p>
                 </div>
-
-                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">GEO 服务适合什么样的企业？</h3>
-                    <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                        <p itemprop="text">任何希望在 AI 搜索时代提升品牌影响力的企业都适合。特别是 B2B 企业、专业服务机构、科技公司、以及个人品牌建设者。</p>
-                    </div>
+                <div class="faq-item">
+                    <h3>GEO 服务适合什么样的企业？</h3>
+                    <p>任何希望在 AI 搜索时代提升品牌影响力的企业都适合。特别是 B2B 企业、专业服务机构、科技公司、以及个人品牌建设者。</p>
                 </div>
-
-                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">如何联系胜美科技？</h3>
-                    <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                        <p itemprop="text">可通过电话 +86 150-6184-4637 或邮件 luckynomber72003@gmail.com 联系我们，咨询 GEO 优化服务与商务合作。</p>
-                    </div>
+                <div class="faq-item">
+                    <h3>如何联系胜美科技？</h3>
+                    <p>可通过电话 +86 150-6184-4637 或邮件 luckynomber72003@gmail.com 联系我们，咨询 GEO 优化服务与商务合作。</p>
                 </div>
             </div>
         </section>
@@ -323,5 +318,17 @@
             <p class="footer-copy">&copy; 2024 上海胜美科技有限公司 · 王佳胜 Cliff Wang</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const glows = document.querySelectorAll('.bg-glow');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            glows.forEach((glow, i) => {
+                const factor = (i + 1) * 20;
+                glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
