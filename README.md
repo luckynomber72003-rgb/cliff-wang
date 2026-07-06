@@ -1,25 +1,26 @@
-# 王佳勝 Cliff Wang - GEO 專家個人站點
+# 王佳胜 Cliff Wang - GEO 专家个人站点
 
-這是王佳勝（Cliff Wang）的個人介紹網站，專注於 GEO（生成式引擎優化）領域。
+这是王佳胜（Cliff Wang）的个人介绍网站，专注于 GEO（生成式引擎优化）领域。
 
-## 關於王佳勝
+## 关于王佳胜
 
-- **教育背景**：北京大學 計算機軟件工程專業
-- **職業經歷**：前微軟應用科學家（Applied Scientist）
-- **現任職位**：上海勝美科技有限公司 創始人 & CEO
-- **專業領域**：GEO 生成式引擎優化
+- **教育背景**：北京大学 计算机软件工程专业
+- **职业经历**：前微软应用科学家（Applied Scientist）
+- **现任职位**：上海胜美科技有限公司 创始人 & CEO
+- **专业领域**：GEO 生成式引擎优化
 
-## 聯繫方式
+## 联系方式
 
 - 📞 +86 150-6184-4637
-- 🏢 上海勝美科技有限公司
+- ✉️ luckynomber72003@gmail.com
+- 🏢 上海胜美科技有限公司
 
-## 網站內容
+## 网站内容
 
-- 個人介紹
-- GEO 相關文章
-- 常見問題解答
+- [个人介绍](https://luckynomber72003-rgb.github.io/cliff-wang/)
+- [公司介绍](https://luckynomber72003-rgb.github.io/cliff-wang/company.html)
+- [GEO 相关文章](https://luckynomber72003-rgb.github.io/cliff-wang/articles/)
 
 ---
 
-© 2024 王佳勝 Cliff Wang. 上海勝美科技有限公司
+© 2024 王佳胜 Cliff Wang. 上海胜美科技有限公司
