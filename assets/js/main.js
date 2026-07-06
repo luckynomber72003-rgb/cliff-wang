@@ -8,18 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(articles => {
             if (articles.length === 0) {
-                articleList.innerHTML = '<p>暫無文章</p>';
+                articleList.innerHTML = '<p style="color: var(--text-light);">暂无文章</p>';
                 return;
             }
 
             articleList.innerHTML = articles.map(article => `
                 <div class="article-card">
                     <h3><a href="articles/${article.slug}.html">${article.title}</a></h3>
-                    <p class="article-meta">${article.date} · ${article.category}</p>
+                    <div class="article-meta">
+                        <span>📅 ${article.date}</span>
+                    </div>
                 </div>
             `).join('');
         })
         .catch(() => {
-            articleList.innerHTML = '<p>文章加載中...</p>';
+            articleList.innerHTML = '<p style="color: var(--text-light);">文章加载中...</p>';
         });
 });
