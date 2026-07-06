@@ -33,4 +33,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://YOURUSERNAME.github.io/cliff-wang/sitemap.xml
+Sitemap: https://luckynomber72003-rgb.github.io/cliff-wang/sitemap.xml
