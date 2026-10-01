@@ -1,40 +1,73 @@
-// Load articles on homepage
-document.addEventListener('DOMContentLoaded', function() {
+// 加载首页文章
+async function loadArticles() {
     const articleList = document.getElementById('article-list');
     if (!articleList) return;
 
-    // Fetch article index
-    fetch('articles/index.json')
-        .then(response => response.json())
-        .then(articles => {
-            if (articles.length === 0) {
-                articleList.innerHTML = '<p style="color: var(--text-muted);">暂无文章</p>';
-                return;
-            }
+    try {
+        const response = await fetch('articles/index.json');
+        if (!response.ok) {
+            throw new Error(`文章索引请求失败：${response.status}`);
+        }
 
-            articleList.innerHTML = articles.slice(0, 8).map(article => `
-                <div class="article-card">
-                    <div>
-                        <h3><a href="articles/${article.slug}.html">${article.title}</a></h3>
-                        <div class="article-meta">${article.date}</div>
-                    </div>
-                    <span class="article-arrow">→</span>
-                </div>
-            `).join('');
-        })
-        .catch(() => {
-            articleList.innerHTML = '<p style="color: var(--text-muted);">文章加载中...</p>';
+        const articles = await response.json();
+        if (!Array.isArray(articles) || articles.length === 0) {
+            articleList.textContent = '暂无文章';
+            return;
+        }
+
+        const articleFragment = document.createDocumentFragment();
+        articles.slice(0, 6).forEach((article, index) => {
+            const articleCard = document.createElement('article');
+            articleCard.className = 'article-card';
+
+            const articleMeta = document.createElement('div');
+            articleMeta.className = 'article-meta';
+            articleMeta.textContent = `${String(index + 1).padStart(2, '0')} / ${article.date}`;
+
+            const articleTitle = document.createElement('h3');
+            const articleLink = document.createElement('a');
+            articleLink.href = `articles/${encodeURIComponent(article.slug)}.html`;
+            articleLink.textContent = article.title;
+            articleTitle.appendChild(articleLink);
+
+            const articleArrow = document.createElement('span');
+            articleArrow.className = 'article-arrow';
+            articleArrow.setAttribute('aria-hidden', 'true');
+            articleArrow.textContent = '→';
+
+            articleCard.append(articleMeta, articleTitle, articleArrow);
+            articleFragment.appendChild(articleCard);
         });
-});
 
-// Add subtle mouse parallax effect to glow elements
-document.addEventListener('mousemove', (e) => {
-    const glows = document.querySelectorAll('.bg-glow');
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
+        articleList.replaceChildren(articleFragment);
+    } catch (error) {
+        console.error('无法加载文章列表：', error);
+        articleList.textContent = '文章暂时无法加载，请稍后重试。';
+    }
+}
 
-    glows.forEach((glow, i) => {
-        const factor = (i + 1) * 20;
-        glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-    });
+// 进入视口时显示内容
+function initializeRevealAnimations() {
+    const revealElements = document.querySelectorAll('.reveal');
+    if (!revealElements.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+        return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    initializeRevealAnimations();
+    await loadArticles();
 });
